@@ -1,3 +1,5 @@
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+
 module.exports = {
     networks: {
         development: {
@@ -12,6 +14,24 @@ module.exports = {
             port: 8555,
             gas: 0xfffffffffff,
             gasPrice: 0x01,
+        },
+        mumbai: {
+            // eslint-disable-next-line max-len
+            provider: () => new HDWalletProvider({ privateKeys: [''], providerOrUrl: 'https://rpc-mumbai.maticvigil.com' }),
+            network_id: 80001,
+            gasPrice: 3000000000,
+            confirmations: 2,
+            timeoutBlocks: 200,
+            skipDryRun: true,
+        },
+        polygon: {
+            // eslint-disable-next-line max-len
+            provider: () => new HDWalletProvider({ privateKeys: [''], providerOrUrl: 'https://rpc-mainnet.maticvigil.com' }),
+            network_id: 137,
+            gasPrice: 3000000000,
+            confirmations: 2,
+            timeoutBlocks: 200,
+            skipDryRun: true,
         },
     },
     // Configure your compilers
