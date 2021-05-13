@@ -1,3 +1,4 @@
+require('dotenv').config();
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 module.exports = {
@@ -17,16 +18,16 @@ module.exports = {
         },
         mumbai: {
             // eslint-disable-next-line max-len
-            provider: () => new HDWalletProvider({ privateKeys: [''], providerOrUrl: 'https://rpc-mumbai.maticvigil.com' }),
+            provider: () => new HDWalletProvider(process.env.MNEMONIC, 'https://rpc-mumbai.maticvigil.com'),
             network_id: 80001,
-            gasPrice: 3000000000,
+            gasPrice: 3000000000, // 3 gwei
             confirmations: 2,
             timeoutBlocks: 200,
             skipDryRun: true,
         },
         polygon: {
             // eslint-disable-next-line max-len
-            provider: () => new HDWalletProvider({ privateKeys: [''], providerOrUrl: 'https://rpc-mainnet.maticvigil.com' }),
+            provider: () => new HDWalletProvider(process.env.MNEMONIC, 'https://rpc-mainnet.maticvigil.com'),
             network_id: 137,
             gasPrice: 3000000000,
             confirmations: 2,
